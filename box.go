@@ -81,7 +81,8 @@ func (b *box) RemoveAllCircles() error {
 	var existCircle bool
 	for i := 0; i < len(b.shapes); i++ {
 		_, ok := b.shapes[i].(Circle)
-		if ok {
+		_, ok2 := b.shapes[i].(*Circle)
+		if ok || ok2 {
 			b.ExtractByIndex(i)
 			i--
 			existCircle = true
